@@ -1,0 +1,5 @@
+10.0.0.1 avalon.ru
+10.0.0.2 intranet.avalon.ru
+10.0.0.3 internet.avalon.ru
+127.0.0.1 localhost
+127.0.0.2 cisco.com
