@@ -1,10 +1,7 @@
 #!/usr/bin/python
 
-def isLeapYear( y ):
-    if(not(y % 400) or ((y % 100) and not(y & 3))):
-        return True
-    else:
-        return False
+def isLeapYear(y):
+    return (not(y % 400) or ((y % 100) and not(y & 3)))
 
 try:
     year = int(raw_input('Enter year: '))
