@@ -2,24 +2,25 @@
 
 import os.path
 
+readInput = raw_input
 
-fname = raw_input('Enter filename to read: ')
+fname = readInput('Enter filename to read: ')
 if(os.path.isfile(fname)):
     fopen = open(fname)
 
-    _list=[]
+    linesList = []
     for line in fopen.readlines():
-        _list.append(tuple(line.split()))
+        linesList.append(line.split())
     fopen.close()
 
-    for item in _list:
+    for item in linesList:
         print item[0] + " " + item[1]
     if(os.path.isfile(fname)):
         fopen = open(fname, 'w')
-        for item in _list:
+        for item in linesList:
             fopen.writelines(item[0] + ' ' + item[1]+ '\n')
 
-        fopen.writelines(raw_input('Enter new host: '))
+        fopen.writelines(readInput('Enter new host: '))
         fopen.close()
     else:
         print "File NOT FOUND!!!"

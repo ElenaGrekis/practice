@@ -2,29 +2,31 @@
 
 import os.path
 
+readInput = raw_input
 
-fname = raw_input('Enter filename to search host: ')
+
+fname = readInput('Enter filename to search host: ')
 if(os.path.isfile(fname)):
     fopen = open(fname)
-    _list = []
+    linesList = []
     for line in fopen.readlines():
         linetest = line.split()
-        _dict = {}
-        _dict[linetest[0]] = linetest[1]
-        _list.append(_dict)
+        dictionary = {}
+        dictionary[linetest[0]] = linetest[1]
+        linesList.append(dictionary)
     fopen.close()
 
     flag = False
-    if  (raw_input('Enter \'i\' for search search by IP,\n anything else - to search by hostname: ') == 'i'):
-        string = raw_input('Enter IP: ')
-        for item in _list:
+    if  (readInput('Enter \'i\' for search search by IP,\n anything else - to search by hostname: ') == 'i'):
+        string = readInput('Enter IP: ')
+        for item in linesList:
             if  item.has_key(string):
                 flag = True
                 print "Hostname FOUND: " + item[string]
                 break
     else:
-        string = raw_input('Enter hostname: ')
-        for item in _list:
+        string = readInput('Enter hostname: ')
+        for item in linesList:
             for key, value in item.items():
                 if  value == string:
                     flag = True
