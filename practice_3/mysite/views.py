@@ -3,7 +3,7 @@ import os, time
 from django.shortcuts import render_to_response
 
 def listing(request, path):
-    base = "C:/" #/var
+    base = "/var/"
 
     print base + path
     allfiles = os.listdir(base + path)
