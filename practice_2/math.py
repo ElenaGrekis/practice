@@ -24,7 +24,7 @@ print ", ".join(consts.keys())
 try:
     const, perc = userInput("Input format is const:perc ").split(':')
     if(consts.has_key(const) and perc.isdigit() and perc >= 0):
-        print "%.{0}f".format(perc) % consts[const]
+        print str(round(consts[const], int(perc)))
     else:
         print "Error in input. Try again"
 except (ValueError, TypeError):

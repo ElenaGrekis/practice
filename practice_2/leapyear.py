@@ -10,8 +10,8 @@ try:
     year = int(raw_input('Enter year: '))
     if(year > 0 and year < 9999):
         if(isLeapYear(year)):
-            print "Cool the year is leap!"
+            print "Cool the " + str(year) + " year is leap!"
         else:
-            print ":( not leap year"
+            print str(year) + " not leap year"
 except (ValueError, TypeError):
     print "Error in year! Try again"
