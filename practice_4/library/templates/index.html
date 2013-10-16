@@ -3,7 +3,7 @@
     <table>
 	<th>Название</th><th>Автор</th><th>Издательство</th>
     {% for book in books %}
-        <tr><td><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></td><td>{% for author in book.authors.all %}{{ author.first_name|add:author.last_name }}; {% endfor %}</td><td>{{ book.publisher.title }}</td></tr>
+        <tr><td><a href="{{ book.get_absolute_url }}">{{ book }}</a></td><td>{% for author in book.authors.all %}{{ author }}; {% endfor %}</td><td>{{ book.publisher }}</td></tr>
     {% endfor %}
     </table>
 {% else %}

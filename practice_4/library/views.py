@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 
 from library.models import Book
+from library.models import Author
 
 
 def index(request):
@@ -21,10 +22,20 @@ def show_book(request, book_id):
     })
     return HttpResponse(template.render(context))
 
-def show_author(request, author_id): #FIXED IN Task3
-    book = Book.objects.get(id=author_id)
-    template = loader.get_template('book.html')
+def show_author(request, author_id):
+    author = Author.objects.get(id=author_id)
+    template = loader.get_template('author.html')
     context = RequestContext(request, {
-        'book': book,
+        'author': author,
     })
     return HttpResponse(template.render(context))
+
+
+def list_authors(request):
+    authors = Author.objects.all()
+    template = loader.get_template('list_authors.html')
+    context = RequestContext(request, {
+        'authors': authors,
+    })
+    return HttpResponse(template.render(context))
+
