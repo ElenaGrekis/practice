@@ -8,7 +8,8 @@ from library.views import list_authors
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     # Examples:
     # url(r'^$', 'mylib.views.home', name='home'),
     # url(r'^mylib/', include('mylib.foo.urls')),

@@ -20,6 +20,7 @@ def show_book(request, book_id):
     })
     return render(request, 'book.html', context)
 
+
 def show_author(request, author_id):
     author = Author.objects.get(id=author_id)
     context = RequestContext(request, {
@@ -34,4 +35,3 @@ def list_authors(request):
         'authors': authors,
     })
     return render(request, 'list_authors.html', context)
-
