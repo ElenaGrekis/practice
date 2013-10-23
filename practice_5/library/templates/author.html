@@ -1,0 +1,9 @@
+﻿<h1>Информация об авторе</h1>
+{% if author %}
+    <table border="1">
+	<th>Фамилия Имя</th><th>E-mail</th>
+        <tr><td>{{ author }}</td><td>{{ author.email }}</td></tr>
+    </table>
+{% else %}
+    <p>No author information available.</p>
+{% endif %}
