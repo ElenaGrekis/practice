@@ -37,3 +37,18 @@ class Book(models.Model):
 
     def get_absolute_url(self):
         return reverse('show_book', args=[str(self.id)])
+
+class BooksImage(models.Model):
+    small = models.ImageField(upload_to="s_images")
+    big = models.ImageField(upload_to="b_images", null=True, blank=True)
+
+    def __init__(self):
+        self.__cover = "No cover"
+
+    def getcover(self):
+        return self.__cover
+
+    def setcover(self, cover):
+        self.__cover = cover
+
+    cover = property(getcover, setcover)
