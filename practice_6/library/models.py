@@ -5,9 +5,10 @@ from django.core.urlresolvers import reverse
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
+from utils.models import TimeStampedModel
 
 
-class Author(models.Model):
+class Author(TimeStampedModel):
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
     email = models.EmailField(null=True)
@@ -20,7 +21,7 @@ class Author(models.Model):
         return reverse('show_author', args=[str(self.id)])
 
 
-class Publisher(models.Model):
+class Publisher(TimeStampedModel):
     title = models.CharField(max_length=32)
     address = models.TextField()
     city = models.CharField(max_length=64)
@@ -31,7 +32,7 @@ class Publisher(models.Model):
         return u'%s (%s, %s)' % (self.title, self.city, self.country)
 
 
-class Book(models.Model):
+class Book(TimeStampedModel):
     title = models.CharField(max_length=128)
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)
@@ -45,7 +46,7 @@ class Book(models.Model):
         return reverse('show_book', args=[str(self.id)])
 
 
-class BooksImage(models.Model):
+class BooksImage(TimeStampedModel):
     small = models.ImageField(upload_to="s_images")
     big = models.ImageField(upload_to="b_images", null=True, blank=True)
     content_type = models.ForeignKey(ContentType)
