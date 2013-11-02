@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from datetime import datetime
 from django.core.urlresolvers import reverse
@@ -5,10 +6,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
 
+
 class Author(models.Model):
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
     email = models.EmailField(null=True)
+    birthyear = models.DecimalField(null=True, blank=True, max_digits=4, decimal_places=4)
 
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)

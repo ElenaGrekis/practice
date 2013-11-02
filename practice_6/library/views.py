@@ -3,6 +3,7 @@ from django.template import RequestContext, loader
 
 from library.models import Book
 from library.models import Author
+from datetime import date
 
 
 def index(request):
@@ -23,8 +24,10 @@ def show_book(request, book_id):
 
 def show_author(request, author_id):
     author = Author.objects.get(id=author_id)
+    age = date.today().year-author.birthyear if author.birthyear else 0
     context = RequestContext(request, {
         'author': author,
+        'age': age,
     })
     return render(request, 'author.html', context)
 
