@@ -5,36 +5,25 @@ from library.models import Book
 from library.models import Author
 from datetime import date
 
+from django.views.generic import DetailView
+from django.views.generic import TemplateView
+from django.views.generic import ListView
 
-def index(request):
-    books = Book.objects.all()
-    context = {
-        'books': books,
-    }
-    return render(request, 'index.html', context)
-
-
-def show_book(request, book_id):
-    book = Book.objects.get(id=book_id)
-    context = {
-        'book': book,
-    }
-    return render(request, 'book.html', context)
+class BookListView(ListView):
+    template_name = "book_list.html"
+    model = Book
 
 
-def show_author(request, author_id):
-    author = Author.objects.get(id=author_id)
-    age = date.today().year - author.birthyear if author.birthyear else 0
-    context = {
-        'author': author,
-        'age': age,
-    }
-    return render(request, 'author.html', context)
+class AuthorListView(ListView):
+    template_name = "author_list.html"
+    model = Author
 
 
-def list_authors(request):
-    authors = Author.objects.all()
-    context = {
-        'authors': authors,
-    }
-    return render(request, 'list_authors.html', context)
+class BookDetailView(DetailView):
+    template_name = "book_detail.html"
+    queryset = Book.objects.all()
+
+
+class AuthorDetailView(DetailView):
+    template_name = "author_detail.html"
+    queryset = Author.objects.all()

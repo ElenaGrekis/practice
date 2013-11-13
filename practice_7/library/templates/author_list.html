@@ -1,7 +1,7 @@
 ﻿<h1>Список авторов</h1>
-{% if authors %}
+{% if object_list %}
 <ul>
-    {% for author in authors %}
+    {% for author in object_list %}
         <li><a href="{{ author.get_absolute_url }}">{{ author }}</a></li>
     {% endfor %}
 </ul>
