@@ -9,6 +9,11 @@ from django.views.generic import DetailView
 from django.views.generic import TemplateView
 from django.views.generic import ListView
 
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+
 class BookListView(ListView):
     template_name = "book_list.html"
     model = Book
@@ -27,3 +32,16 @@ class BookDetailView(DetailView):
 class AuthorDetailView(DetailView):
     template_name = "author_detail.html"
     queryset = Author.objects.all()
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            return HttpResponseRedirect("/login/")
+    else:
+        form = UserCreationForm()
+    return render(request, "registration/register.html", {
+        'form': form,
+    })
