@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Квадрат</title>
+<style type="text/css">
+<!--
+.square {
+border: 1px solid #FF0000;
+position: absolute;
+width: 100px;
+height: 100px;
+top: 0px;
+left: 0px;
+}
+-->
+</style>
+
+<script type="text/javascript">
+
+	var position = 0,
+		timeout_id = null;
+	function init()
+	{
+		d = document.getElementById("square");
+		d.className = 'square';		
+		d.style.left = (screen.availWidth/2)-100 + "px";
+	}
+
+	function move()
+	{
+		position += 1;
+
+		timeout_id = setTimeout("move()", 10); 
+		if(position == (document.documentElement.clientHeight-100))
+		{
+			clearTimeout(timeout_id);
+		}
+
+		d = document.getElementById("square");
+		d.style.top = position + "px";
+
+	}
+</script>
+
+	</head>
+	<body onload="init()">
+		<div id="square" onclick="if(timeout_id == null) move();"></div>
+	</body>
+
+</html>
