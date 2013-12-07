@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Галерея</title>
+		<script type="text/javascript">
+    	var imgnums = 9;
+	var images = new Array(imgnums),
+        index = 0;
+ 
+    for (var i = 0; i < imgnums; i++) {
+        images[i] = new Image();                 
+        images[i].src = "images/" + (i+1) + ".jpg";  
+    }
+    
+    function next() {
+        index = ( (index + 1) ) % imgnums;                        
+        document.pic.src = images[index].src; 
+ 
+    }
+    function prev() {
+        index = index - 1;
+	if(index < 0)
+	{
+		index = imgnums-1;
+	}
+        document.pic.src = images[index].src; 
+ 
+    }
+
+		</script>
+	</head>
+	<body>
+		<h1>Галерея </h1>
+		<table>
+			<tr>
+				<th><input type="button" value="Назад" onclick="prev()" /></th>
+				<th><input type="button" value="Вперёд" onclick="next()" /></th>
+			</tr>
+			<tr>
+			<td colspan="2"><img src="images/1.jpg" name="pic" alt="" /></td>
+			</tr>
+		</table>
+	</body>
+
+</html>
